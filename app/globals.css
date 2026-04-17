@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #1a1a2e;
+  font-family: 'Nunito', sans-serif;
+  user-select: none;
+}
+
+.font-game {
+  font-family: 'Fredoka One', cursive;
+}
+
+/* Rope segments */
+.rope-segment {
+  display: inline-block;
+  width: 28px;
+  height: 18px;
+  border-radius: 50%;
+  border: 4px solid #8B5E3C;
+  border-color: #8B5E3C transparent #5C3A1E transparent;
+  transform: rotate(45deg);
+}
+
+/* Pit gradient */
+.pit {
+  background: radial-gradient(ellipse at top, #2d1b00 0%, #0a0500 60%, #000 100%);
+}
+
+/* Scoreboard glow */
+.score-glow-blue {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.3);
+}
+.score-glow-red {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.6), 0 0 40px rgba(239, 68, 68, 0.3);
+}
+
+/* Answer buttons */
+.btn-left {
+  background: linear-gradient(145deg, #22c55e, #16a34a);
+  box-shadow: 0 6px 0 #14532d, 0 8px 15px rgba(0,0,0,0.3);
+}
+.btn-left:active, .btn-left.pressed {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #14532d, 0 4px 8px rgba(0,0,0,0.3);
+}
+.btn-left:hover {
+  background: linear-gradient(145deg, #4ade80, #22c55e);
+}
+
+.btn-right {
+  background: linear-gradient(145deg, #f97316, #ea580c);
+  box-shadow: 0 6px 0 #7c2d12, 0 8px 15px rgba(0,0,0,0.3);
+}
+.btn-right:active, .btn-right.pressed {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #7c2d12, 0 4px 8px rgba(0,0,0,0.3);
+}
+.btn-right:hover {
+  background: linear-gradient(145deg, #fb923c, #f97316);
+}
+
+/* Wood panel */
+.wood-panel {
+  background: linear-gradient(135deg, #92400e 0%, #78350f 40%, #92400e 70%, #6b2d0e 100%);
+  border: 4px solid #d97706;
+  border-radius: 12px;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.15), 0 8px 20px rgba(0,0,0,0.5);
+}
+
+/* Ground */
+.ground {
+  background: linear-gradient(180deg, #65a30d 0%, #4d7c0f 30%, #3a5a0a 100%);
+}
+
+/* Sky */
+.sky-bg {
+  background: linear-gradient(180deg, #0ea5e9 0%, #38bdf8 40%, #7dd3fc 70%, #bae6fd 100%);
+}
+
+/* Balloon float */
+@keyframes float1 {
+  0%, 100% { transform: translateY(0px) rotate(-3deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translateY(-8px) rotate(2deg); }
+  50% { transform: translateY(8px) rotate(-2deg); }
+}
+@keyframes float3 {
+  0%, 100% { transform: translateY(-4px) rotate(-1deg); }
+  50% { transform: translateY(12px) rotate(4deg); }
+}
+.balloon-1 { animation: float1 3s ease-in-out infinite; }
+.balloon-2 { animation: float2 3.5s ease-in-out infinite; }
+.balloon-3 { animation: float3 2.8s ease-in-out infinite; }
+
+/* Team characters bounce */
+@keyframes team-idle {
+  0%, 100% { transform: scaleY(1) translateY(0); }
+  50% { transform: scaleY(0.97) translateY(2px); }
+}
+.team-idle {
+  animation: team-idle 0.8s ease-in-out infinite;
+}
+
+/* Correct flash */
+@keyframes correct-flash {
+  0% { background-color: rgba(34,197,94,0); }
+  30% { background-color: rgba(34,197,94,0.4); }
+  100% { background-color: rgba(34,197,94,0); }
+}
+.flash-correct {
+  animation: correct-flash 0.5s ease-out;
+}
+
+/* Wrong flash */
+@keyframes wrong-flash {
+  0% { background-color: rgba(239,68,68,0); }
+  30% { background-color: rgba(239,68,68,0.4); }
+  100% { background-color: rgba(239,68,68,0); }
+}
+.flash-wrong {
+  animation: wrong-flash 0.5s ease-out;
+}
+
+/* Countdown */
+@keyframes countdown-pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.countdown-pop {
+  animation: countdown-pop 0.4s ease-out forwards;
+}
+
+/* Win celebration */
+@keyframes celebrate {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.1) rotate(-5deg); }
+  75% { transform: scale(1.1) rotate(5deg); }
+}
+.celebrate {
+  animation: celebrate 0.5s ease-in-out infinite;
+}
