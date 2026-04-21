@@ -49,5 +49,14 @@ module.exports = {
       },
     },
   },
+  addEventListener{
+    'keydown': (event) => {
+      if (event.key === 'Enter') {
+        // Trigger the guess submission logic here
+      } else if (event.key === 'Backspace') {
+        // Trigger the logic to remove the last letter from the current guess
+      }
+    }
+  }
   plugins: [],
 }
